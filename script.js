@@ -14,14 +14,29 @@
   const postActions = document.getElementById('postActions');
   const backBtn = document.getElementById('backBtn');
 
-  function pickRandomImage(excludeSrc) {
-    if (!Array.isArray(images) || images.length === 0) return excludeSrc || bgSrc;
-    let candidate = images[Math.floor(Math.random() * images.length)];
-    // 避免与当前相同，重掷一次（简单去重，防止连续相同体验差）
-    if (excludeSrc && candidate === excludeSrc && images.length > 1) {
-      candidate = images[Math.floor(Math.random() * images.length)];
+  // 维护每轮的剩余池：每轮包含 6 张，不重复；用尽后重置新一轮
+  let remainingPool = [];
+
+  function shuffle(array) {
+    const a = array.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const tmp = a[i];
+      a[i] = a[j];
+      a[j] = tmp;
     }
-    return candidate;
+    return a;
+  }
+
+  function ensurePool() {
+    if (!Array.isArray(remainingPool) || remainingPool.length === 0) {
+      remainingPool = shuffle(images);
+    }
+  }
+
+  function drawFromPool() {
+    ensurePool();
+    return remainingPool.pop();
   }
 
   function toRevealState() {
@@ -40,7 +55,7 @@
   toIdleState();
 
   unboxBtn.addEventListener('click', function () {
-    const next = pickRandomImage(displayImageEl.src);
+    const next = drawFromPool();
     displayImageEl.src = next;
     toRevealState();
   });
@@ -49,7 +64,8 @@
     toIdleState();
   });
 
-  // 仅保留 back 行为
+  // 提示：目前点击 back 不会“归还”本次抽到的图片，
+  // 即每点击一次 unbox 都会消耗一张；当 6 张用尽后自动进入新一轮。
 })();
 
 
