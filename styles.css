@@ -1,0 +1,71 @@
+/* 基本重置 */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: #1f2937;
+  background: #f8fafc;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  gap: 16px;
+}
+
+.box {
+  width: min(88vw, 560px);
+  aspect-ratio: 1 / 1; /* 方形展示区 */
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.actions { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+
+.post-actions { display: flex; gap: 12px; }
+
+.btn {
+  appearance: none;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  color: #111827;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform .08s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.btn:hover { box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
+.btn:active { transform: translateY(1px); }
+
+.btn.primary {
+  background: #111827;
+  color: #fff;
+  border-color: #111827;
+}
+
+@media (max-width: 420px) {
+  .btn { font-size: 15px; padding: 10px 14px; }
+  .post-actions { gap: 10px; }
+}
+
+
