@@ -39,23 +39,24 @@ body {
 }
 
 .congrats-message {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.75);
-  color: #ffd700;
-  font-size: clamp(18px, 4vw, 28px);
+  width: min(88vw, 560px);
+  padding: 12px 16px;
+  background: #fff7e6;
+  color: #d97706;
+  border: 1px solid #fbbf24;
+  border-radius: 12px;
+  font-size: clamp(16px, 3.4vw, 24px);
   font-weight: 700;
   text-align: center;
-  padding: 20px;
-  z-index: 10;
-  animation: fadeIn 0.5s ease-in;
-  text-shadow: 0 2px 8px rgba(255, 215, 0, 0.5);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04), 0 2px 6px rgba(0,0,0,0.05);
+  animation: fadeIn 0.4s ease-in;
+}
+
+.congrats-message[hidden] {
+  display: none !important;
 }
 
 @keyframes fadeIn {
