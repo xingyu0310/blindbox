@@ -58,6 +58,10 @@ body {
   text-shadow: 0 2px 8px rgba(255, 215, 0, 0.5);
 }
 
+.congrats-message[hidden] {
+  display: none !important;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
