@@ -11,7 +11,6 @@
 
   const displayImageEl = document.getElementById('displayImage');
   const unboxBtn = document.getElementById('unboxBtn');
-  const postActions = document.getElementById('postActions');
   const backBtn = document.getElementById('backBtn');
   const congratsMessage = document.getElementById('congratsMessage');
 
@@ -42,13 +41,13 @@
 
   function toRevealState() {
     unboxBtn.hidden = true;
-    postActions.hidden = false;
+    backBtn.hidden = false;
   }
 
   function toIdleState() {
     displayImageEl.src = bgSrc;
     unboxBtn.hidden = false;
-    postActions.hidden = true;
+    backBtn.hidden = true;
     congratsMessage.hidden = true; // 隐藏祝贺消息
   }
 
